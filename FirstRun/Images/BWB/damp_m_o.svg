@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2" viewBox="0 0 20 28">
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <g>
+        <path d="M18.5,4.1H4.7c-.2,0-.4.2-.4.4v22.8c0,.2.2.4.4.4h13.8c.2,0,.4-.2.4-.4V4.5c0-.2-.2-.4-.4-.4ZM18.1,26.9H5.1V4.9h13v22Z" fill="#00E76E"/>
+        <path d="M5.7,5.8v20.3h11.8V5.8H5.7ZM8.1,25.4h-1.6V6.5h1.7v18.9h-.1ZM9.9,25.4h-.4V6.5h.4v18.9ZM11.6,25.4h-.4V6.5h.4v18.9ZM13.3,25.4h-.5V6.5h.4v18.9h.1ZM15,25.4h-.4V6.5h.4v18.9ZM16.7,25.4h-.4V6.5h.4v18.9Z" fill="#00E76E"/>
+      </g>
+      <circle cx="2.3" cy="2.3" r="1" fill="#00E76E" stroke="#00E76E" stroke-miterlimit="10"/>
+      <polyline points="11.9 4.5 11.9 2.3 2.3 2.3" fill="none" stroke="#00E76E" stroke-miterlimit="10"/>
+    </g>
+  </g>
+</svg>

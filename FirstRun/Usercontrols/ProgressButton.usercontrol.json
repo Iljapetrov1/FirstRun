@@ -1,0 +1,60 @@
+{
+  "parameters": [
+    {
+      "allowSymbolExpressionsInObject": false,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setStateSymbol",
+      "propertyGetterName": "getStateSymbol",
+      "refTo": "",
+      "name": "data-tchmi-statesymbol",
+      "displayName": "StateSymbol",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Boolean",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "StateSymbol"
+    },
+    {
+      "allowSymbolExpressionsInObject": false,
+      "defaultValueInternal": 1000.0,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setTime",
+      "propertyGetterName": "getTime",
+      "refTo": "",
+      "name": "data-tchmi-time",
+      "displayName": "Time",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "Time"
+    },
+    {
+      "allowSymbolExpressionsInObject": false,
+      "defaultValueInternal": 5000.0,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setTime2",
+      "propertyGetterName": "getTime2",
+      "refTo": "",
+      "name": "data-tchmi-time2",
+      "displayName": "time2",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "time2"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.3.212/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

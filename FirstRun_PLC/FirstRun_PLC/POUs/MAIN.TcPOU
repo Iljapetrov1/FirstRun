@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{7a965728-9617-4d13-868c-270c1d6d5c6b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	StartTimer : BOOL;         // Trigger to start the timer
+    Timer    : TON;          // TON = On-delay timer
+    Output     : BOOL;         // Output after timer elapses
+
+	cycleTime: TIME := T#3S;
+	bEllipse: BOOL; 
+	
+	tCycle: TON;
+	cycleTime2: TIME := T#2000MS;
+	imageIndex : UINT := 0;   // Index for StateImage
+	
+	state		: E_BatteryState;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Trigger the timer
+Timer(IN := StartTimer, PT := cycleTime);  // 5-second delay
+
+// Set output when timer is done
+Output := Timer.Q;
+
+
+// Timer logic
+tCycle(IN := TRUE, PT := cycleTime2);
+
+IF tCycle.Q THEN
+    IF imageIndex < 4 THEN
+        imageIndex := imageIndex + 1;
+    ELSE
+        imageIndex := 0;
+    END_IF;
+
+    tCycle(IN := FALSE); // Reset timer
+END_IF;
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

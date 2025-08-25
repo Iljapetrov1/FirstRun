@@ -1,0 +1,11 @@
+<div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-mode="Content" data-tchmi-min-width="100" data-tchmi-min-width-unit="%" data-tchmi-height-mode="Content" data-tchmi-min-height="100" data-tchmi-min-height-unit="%">
+  <div id="ViewDesktopBeckhoffLogo" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-src="Images/Beckhoff_Logo.svg" data-tchmi-left="20" data-tchmi-top="20" data-tchmi-width="194" data-tchmi-height="57">
+
+  </div>
+<div id="AnimatedFlow_5" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="-32" data-tchmi-left-unit="px" data-tchmi-target-user-control="Usercontrols/PropertyChangeFlow.usercontrol" data-tchmi-top="118" data-tchmi-top-unit="px" data-tchmi-width="300" data-tchmi-width-unit="px">
+</div>
+<div id="ProgressButton_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="404" data-tchmi-left-unit="px" data-tchmi-target-user-control="Usercontrols/ProgressButton.usercontrol" data-tchmi-top="126" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px">
+</div>
+<div id="AnimatedFlow_6" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="-38" data-tchmi-left-unit="px" data-tchmi-target-user-control="Usercontrols/AnimatedFlow.usercontrol" data-tchmi-top="261" data-tchmi-top-unit="px" data-tchmi-width="300" data-tchmi-width-unit="px">
+</div>
+</div>

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "PropertyChangeFlow": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\PropertyChangeFlow.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/PropertyChangeFlow"
+    },
+    "ProgressButton": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\ProgressButton.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/ProgressButton"
+    },
+    "AnimatedFlow": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\AnimatedFlow.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/AnimatedFlow"
+    },
+    "Battery": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\Battery.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Battery"
+    },
+    "Generator": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\Generator.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Generator"
+    },
+    "MultiStateImageFlow": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\MultiStateImageFlow.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/MultiStateImageFlow"
+    },
+    "Inverter": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\Inverter.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Inverter"
+    },
+    "AlarmWidget": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\AlarmWidget.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/AlarmWidget"
+    },
+    "Battery2": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\Battery2.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Battery2"
+    }
+  }
+}

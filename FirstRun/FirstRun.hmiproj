@@ -1,0 +1,1698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Clean;Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <TcHmiDirectory>$(registry:HKEY_CURRENT_USER\Software\Beckhoff\TwinCAT3\3.1@InstallDir)\..\Functions\TE2000-HMI-Engineering</TcHmiDirectory>
+    <TcHmiDirectory Condition="'$(TcHmiDirectory)'==''">$(registry:HKEY_LOCAL_MACHINE\Software\Beckhoff\TwinCAT3\3.1@InstallDir)\..\Functions\TE2000-HMI-Engineering</TcHmiDirectory>
+    <TcHmiDirectory Condition="'$(TcHmiDirectory)'==''">$(registry:HKEY_LOCAL_MACHINE\Software\Wow6432Node\Beckhoff\TwinCAT3\3.1@InstallDir)\..\Functions\TE2000-HMI-Engineering</TcHmiDirectory>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <AvailablePlatforms>TwinCAT HMI</AvailablePlatforms>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <HmiTitle>FirstRun</HmiTitle>
+    <HmiVerboseLevel>2</HmiVerboseLevel>
+    <HmiVersion>1.0.0.0</HmiVersion>
+    <HmiCommunicationServerPort>3000</HmiCommunicationServerPort>
+    <HmiLogTcHmiServerMessages>false</HmiLogTcHmiServerMessages>
+    <HmiLogDesignerModeComMessages>false</HmiLogDesignerModeComMessages>
+    <HmiDefaultLanguage>client</HmiDefaultLanguage>
+    <HmiViewportInitialScale>1.0</HmiViewportInitialScale>
+    <HmiViewportMinimumScale />
+    <HmiViewportMaximumScale />
+    <HmiViewportUserScaleable>Default</HmiViewportUserScaleable>
+    <HmiPostProcessing>True</HmiPostProcessing>
+    <HmiUseX64>True</HmiUseX64>
+    <TargetFrameworkMoniker>native,Version=v1.12.0,Profile=tchmi</TargetFrameworkMoniker>
+    <TargetFramework>native1.12-tchmi</TargetFramework>
+    <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+    <TcHmi_Beckhoff_TwinCAT_HMI_Server_Engineering_IncludeInArchive>False</TcHmi_Beckhoff_TwinCAT_HMI_Server_Engineering_IncludeInArchive>
+    <Name>FirstRun</Name>
+    <HmiCommunicationRouterPort>10100</HmiCommunicationRouterPort>
+    <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
+    <HmiInitial>14.3.244.1</HmiInitial>
+    <HmiRecent>14.3.244.1</HmiRecent>
+    <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TwinCATHmi_Tasks>$(TcHmiDirectory)\MSBuild\Beckhoff.TwinCAT.HMI.tasks</TwinCATHmi_Tasks>
+    <TwinCATHmi_Targets>$(TcHmiDirectory)\MSBuild\Beckhoff.TwinCAT.HMI.targets</TwinCATHmi_Targets>
+  </PropertyGroup>
+  <Import Project="$(TwinCATHmi_Tasks)" />
+  <Import Project="$(TwinCATHmi_Targets)" />
+  <PropertyGroup>
+    <!-- 
+	      Values: 
+		    VisualStudio := default Microsoft.TypeScript.MsBuild behaviour
+		    Global := the installation directory provided by Windows' registry is used
+	    -->
+    <_TcHmiNodeJsMode>Global</_TcHmiNodeJsMode>
+    <_TcHmiNodeJsMode Condition="'$(_TcHmiNodeJsMode)' == ''">Global</_TcHmiNodeJsMode>
+    <_TcHmiNodePath Condition="'$(_TcHmiNodeJsMode)' == 'Global'">$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Node.js@InstallPath)</_TcHmiNodePath>
+    <_TcHmiNodePath Condition="'$(_TcHmiNodeJsMode)' == 'Global' AND '$(_TcHmiNodePath)' == '' AND Exists('C:\Program Files\nodejs\')">C:\Program Files\nodejs\</_TcHmiNodePath>
+    <_TcHmiNodePath Condition="'$(_TcHmiNodeJsMode)' == 'Global' AND '$(_TcHmiNodePath)' == '' AND Exists('C:\Program Files (x86)\nodejs\')">C:\Program Files (x86)\nodejs\</_TcHmiNodePath>
+  </PropertyGroup>
+  <Target Name="ReTargetNodePath" Condition="'$(_TcHmiNodePath)' != ''" BeforeTargets="$(CompileDependsOn)">
+    <PropertyGroup>
+      <NodePath>$(_TcHmiNodePath)</NodePath>
+    </PropertyGroup>
+  </Target>
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>e8e6e51a-4fc9-4f50-9c36-17f252d17da7</ProjectGuid>
+    <RootNamespace>TwinCAT3HmiProject</RootNamespace>
+    <AssemblyName>TwinCAT3HmiProject</AssemblyName>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">TwinCAT HMI</Platform>
+  </PropertyGroup>
+  <!-- Any CPU -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|TwinCAT HMI' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>TwinCAT HMI</PlatformTarget>
+    <DefaultNamespace>FirstRun</DefaultNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|TwinCAT HMI' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>TwinCAT HMI</PlatformTarget>
+    <DefaultNamespace>FirstRun</DefaultNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="'$(RestoreProjectStyle)' == 'PackageReference'" />
+  <PropertyGroup>
+    <PreBuildEventDependsOn />
+  </PropertyGroup>
+  <Target Name="PreBuildEvent" Condition="'$(PreBuildEvent)'!=''" DependsOnTargets="$(PreBuildEventDependsOn)">
+    <Exec WorkingDirectory="$(OutDir)" Command="$(PreBuildEvent)" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEventDependsOn />
+  </PropertyGroup>
+  <Target Name="PostBuildEvent" Condition="'$(PostBuildEvent)' != '' and ('$(RunPostBuildEvent)'=='Always' or '$(RunPostBuildEvent)'=='OnOutputUpdated')" DependsOnTargets="$(PostBuildEventDependsOn)">
+    <Exec WorkingDirectory="$(OutDir)" Command="$(PostBuildEvent)" />
+  </Target>
+  <Target Name="GetFrameworkPaths" />
+  <PropertyGroup>
+    <BuiltProjectOutputGroupDependsOn>
+			PreBuildEvent;
+			CoreBuild;
+			PostBuildEvent
+		</BuiltProjectOutputGroupDependsOn>
+    <CleanDependsOn>
+			BaseClean
+		</CleanDependsOn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TcHmi_ProjectDirectory Condition="'$(TcHmi_ProjectDirectory)' == ''">$(MSBuildProjectDirectory)</TcHmi_ProjectDirectory>
+    <TcHmi_ServerAddress Condition="'$(TcHmi_ServerAddress)' == ''">127.0.0.1</TcHmi_ServerAddress>
+    <TcHmi_ServerPort Condition="'$(TcHmi_ServerPort)' == ''">1010</TcHmi_ServerPort>
+  </PropertyGroup>
+  <Target Name="CoreBuild">
+    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Clean" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" />
+    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Build" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" ProjectFiles="@(Content)" VirtualMappings="$(TcHmi_VirtualMappings)" PostProcessing="$(HmiPostProcessing)" />
+    <TcHmiMSBuild.Publish.TcHmiGenerator TaskAction="EntryPage" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" TcHmiServerAddress="$(TcHmi_ServerAddress)" TcHmiServerPort="$(TcHmi_ServerPort)">
+      <Output TaskParameter="Result" PropertyName="TaskResult0" />
+    </TcHmiMSBuild.Publish.TcHmiGenerator>
+    <Message Text="Generating the Default.html within OutputPath('$(OutputPath)'): $(TaskResult0)" />
+  </Target>
+  <Target Name="Build" DependsOnTargets="$(BuiltProjectOutputGroupDependsOn)" />
+  <Target Name="Clean" DependsOnTargets="$(CleanDependsOn)" />
+  <Target Name="ReBuild" DependsOnTargets="Clean; Build" />
+  <ItemGroup>
+    <Content Include="Desktop3.view">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\alarms\alarms.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\alarms\alarms_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\alarms\alarms_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\alarms\alarms_unack.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Batt_flows\Batt_flow1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Batt_flows\Batt_flow2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Batt_flows\Batt_flow3.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Batt_flows\Batt_flow4.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Batt_flows\Batt_flow5.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_BatteryRoom1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_BatteryRoom1Y.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_BatteryRoom2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_bilge_aft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_bilge_fore.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_bilge_mid.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_BowThrusterRoom.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_BowThrusterRoomY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Cabin1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Cabin1Y.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Cabin2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Cabin2Y.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Cabin3.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Cabin3Y.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Corridor.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_CorridorY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_DryingRoom.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_DryingRoomY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_EngineRoom.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_EngineRoomY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fireBase.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fire_aftpeak.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fire_aftpeakY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fire_switchboard.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fire_switchboardY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fire_technicalRoom.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_fire_technicalRoomY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_Pantry.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_PantryY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_tanks.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_top2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_top3.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_top5.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_wheat_mid.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_wheat_ps.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_wheat_sb.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_WheelHouse.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_WheelHouseR.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90236_WheelHouseY.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_GRNaft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_GRNfwd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_GRNmidAFT.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_GRNmidFWD.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_MastHeadBottom.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_MastHeadLower.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_MastHeadUpper.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_navlightsBase.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_NucLowerAft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_NucLowerFwd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_NucUpperAft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_NucUpperFwd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_PS.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_Ramaft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_Ramfwd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_REDaft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_REDfwd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_RedMiddleAft.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_RedMiddleFwd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_SB.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_Stern.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_Towing.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_White135.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\90237_White225.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\alarms_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\alarms_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\arcgaugeneedle.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\audioicon1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\audioicon3.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\audioicon8.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\autoicon53.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\automanual-bg-active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bar_vert_gradient.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bar_vert_gradient2d.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\battery_el.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\battery_el_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\battery_modified_blue.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\battery_modified_fault.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\battery_modified_gray.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\battery_modified_ylw.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bgswitchuserloginpage_combo.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bgusereditor.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bilge_high.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bilge_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bilge_ok.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\boiler_fired.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\boiler_fired_burner.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\BrakeOff.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\BrakeOn.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\brightness_minus-active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\brightness_minus.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\brightness_minus_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\brightness_plus-active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\brightness_plus.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\brightness_plus_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn-next.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn-previous.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_imute_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_imute_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_isubmenu_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_isubmenu_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_menu_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_menu_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_narrow2_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_narrow2_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_narrow_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_narrow_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_narrow_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_rect_blueup.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_rect_dwn.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_rect_grayup.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-ac.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-alarms.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-dc.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-fire.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-navlights.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-overview.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-propulsion.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-settings.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-switches.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_sitemap-tanks.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_submenu_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_submenu_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_submenu_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_wide_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\btn_wide_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bunkering.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\bunkering_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\button_isquare_clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\button_square_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\callpoint2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cb_closed2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cb_closed2_2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cb_open2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\check1_gn.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\checkboxoff.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\checkboxon.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cont6_left.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cont6_open.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cont6_right.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cont_closed2_2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Cont_closed_bl.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cont_open2_gy.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\cont_open4.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Cont_open_gy.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_aft2_c.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_aft2_o.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_aft_c.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_aft_o.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_fwd_c.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_fwd_o.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_m_c_r.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\damp_m_o.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\dc_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\delete1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\delete1_rd.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\door_closed2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\door_open.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\dwn_arrow_ico.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\electricicon18.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\electricity_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\engine_load.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\euroguard.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Fan1_OFF.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Fan1_ON2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Fan2_OFF.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Fan2_ON2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\fancoil.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Favicon.ico">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ferry_symbol.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\fire_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\flamedetector2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\flow.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\fuse_alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\halfroundedcrescentarrow.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\hatch1_closed.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\hatch1_closed_gy.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\hatch1_open.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\heatdetector2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\HMIpanel.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\iautomanual-bg-clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\iautomanual-bg-inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\iautomanual-bg-inactive_empty.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-dieselengine_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-dieselengine_alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-dieselengine_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-generator_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-generator_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-heating1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-AC-DC_blue.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-AC-DC_grey.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-AC-DC_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-AC_blue.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-AC_grey.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-AC_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-DC_blue.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-DC_grey.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-DC_lbl.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-inverter-DC-DC_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-propeller2_blue.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-propeller2_grey.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-propeller_blue.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-propeller_grey.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-propeller_lbl.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-10.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-11.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-12.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-13.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-14.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-15.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-16.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-17.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-18.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-19.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-20.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-21.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-22.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-23.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-24.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-25.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-26.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-27.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-28.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-29.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-3.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-4.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-5.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-6.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-7.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-8.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final-9.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic-vessel-prep-final.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_au2_003.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_au2_004.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_coolant_temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_engine_speed.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_er_temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_exhaust_temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_Finterlock_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_fuelrate.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_hydro_level.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_hydro_temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_indoor_temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_interlock_active.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_interlock_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_local.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_no_com.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_oil_press.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_out_temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_power.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_throttle.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ic_torquenm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-closed-alarm-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-closed-local_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-half-alarm-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-half-closing-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-half-opening-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-half-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-open-alarm-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-open-local-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-open-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper-unknown-vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\idamper_closed_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_emergencybutton_off2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_emergencybutton_on.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_fire.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_no_fire2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_shore_power_connected.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_shore_power_off2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\indic_shore_power_on.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\inductor_bl.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\inductor_gray.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\info.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\isolator_closed.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\isolator_open.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-closed-alarm_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-closed-alarm_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-closed-local_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-closed-local_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-closed_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-closed_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half-alarm_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half-alarm_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half-closing_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half-closing_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half-opening_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half-opening_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-half_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve-unknown_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\ivalve_unknown_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\laev.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\led_gangway_off.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\led_gangway_on.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\LevelTooLow.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\lightsicon3.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\light_off.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\light_on.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\meterbg_black.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\meterbg_green.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\meterbg_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\meterbg_yellow.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlights_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_112l_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_112r_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_112_green.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_112_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_135_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_135_white.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_180_grn.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_180_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_180_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_180_white.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_225_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\navlight_225_white.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Nupp_Alus_active2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Nupp_Alus_Puhas2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Nupp_Alus_Puhas_clicked2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\overview_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\PLC_general.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\pressure.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\propulsion_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\pump_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\pump_off_local.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\pump_on.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\pump_on_local.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\rudder_alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\rudder_dark.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\search_icon.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\settings_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\smokedetector2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\spotlight_off.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\spotlight_on.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\spotlight_on_bl.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\spotlight_on_bl1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\spotlight_on_ylw.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\spotlight_on_ylw1.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitch-foff-local-alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitch-foff-local.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitch-fon-local-alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitch-fon-local.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-clicked.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-foff-soff-alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-foff-soff.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-foff-soff_centre.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-foff-son-alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-foff-son.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-foff-son_left.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-fon-soff-alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-fon-soff.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-fon-son-alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\sswitchi-fon-son.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switches_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_closed.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_closed2_bl.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_open.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_open2_gr.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_open2_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_open_gy.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_westermo.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\switch_westermo_red.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\tankcal.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\tanklevel.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\tanklevel_alarm.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\tanks_icon_inactive.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\temp.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\tick2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\Uncheck2.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\up_arrow_ico.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-closed-alarm_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-closed-local_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-closed_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-half-alarm_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-half-closing_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-half-opening_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-half_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-open-alarm_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-open-alarm_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-open-local_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-open-local_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-open_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-open_vert.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\valve-unknown_horiz.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\web_left_arrowicon.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\wheating_OFF.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\wheating_ON.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\win-like-press.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\BWB\win-like.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="NavigationMain.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pages\Event2.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pages\Overview.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pages\SingleLine.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Animate.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Scripts\Animate.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Animate.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiEventLogger\TcHmiEventLogger.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiEventLogger\TcHmiEventLogger.Config.remote.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiEventLogger\TcHmiEventLogger.Storage.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\AlarmWidget.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\AlarmWidget.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\AlarmWidget.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\AnimatedFlow.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\AnimatedFlow.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\AnimatedFlow.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\Battery.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\Battery.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\Battery.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\Generator.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\Generator.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\Generator.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\Inverter.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\Inverter.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\Inverter.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\MultiStateImageFlow.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\MultiStateImageFlow.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\MultiStateImageFlow.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\ProgressButton.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\ProgressButton.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\ProgressButton.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="Usercontrols\PropertyChangeFlow.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Usercontrols\PropertyChangeFlow.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Usercontrols\PropertyChangeFlow.usercontrol</DependentUpon>
+    </Content>
+    <Folder Include="Fonts\" />
+    <Folder Include="Images" />
+    <Folder Include="Images\Batt_flows" />
+    <Folder Include="Images\Manifest" />
+    <Folder Include="Images\alarms" />
+    <Folder Include="Images\BWB" />
+    <Folder Include="Imports" />
+    <Folder Include="Imports\Images" />
+    <Folder Include="Imports\Videos" />
+    <Folder Include="KeyboardLayouts\" />
+    <Folder Include="Localization" />
+    <Folder Include="Pages" />
+    <Folder Include="Scripts" />
+    <Folder Include="Server\TcHmiEventLogger" />
+    <Folder Include="Usercontrols" />
+    <Folder Include="Themes" />
+    <Folder Include="Themes\Base-Dark\Images\" />
+    <Folder Include="Themes\Base\" />
+    <Folder Include="Themes\Base-Dark\" />
+    <Folder Include="Server">
+      <WorkingDirectory>FirstRun</WorkingDirectory>
+    </Folder>
+    <Folder Include="Properties" />
+    <Content Include=".eslintrc.json">
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>True</Visible>
+    </Content>
+    <Content Include="tsconfig.tpl.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="tsconfig.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+      <DependentUpon>tsconfig.tpl.json</DependentUpon>
+    </Content>
+    <Content Include="packages.config">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="packages.xsd">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Properties\tchmiconfig.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Properties\tchmi.framework.Schema.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Properties\tchmi.project.Schema.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Properties\tchmipublish.config.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Properties\tchmimanifest.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Properties\Default.tpl">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include=".tfignore">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include=".gitignore">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Fonts\Fonts.css">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Fonts\Roboto-Condensed-webfont.woff">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Base.theme">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\BaseStyle.css">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Splash-320x534.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Splash-420x200.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base\Images\Splash-800x600.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Base-Dark.theme">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Base-DarkStyle.css">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Splash-320x534.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Splash-420x200.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Themes\Base-Dark\Images\Splash-800x600.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Localization\de.localization">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Localization\en.localization">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="KeyboardLayouts\German - compact.keyboard.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="KeyboardLayouts\US - compact.keyboard.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="KeyboardLayouts\Numpad (plusminus).keyboard.json">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Favicon.ico">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Beckhoff_Logo.svg">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Manifest\launcher-icon-0-75x.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Manifest\launcher-icon-1-5x.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Manifest\launcher-icon-1x.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Manifest\launcher-icon-2x.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Manifest\launcher-icon-3x.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Images\Manifest\launcher-icon-4x.png">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Content Include="Desktop.view">
+      <SubType>Content</SubType>
+      <Visible>true</Visible>
+    </Content>
+    <Folder Include="Server\ADS\" />
+    <Folder Include="Server\TcHmiLua\" />
+    <Folder Include="Server\TcHmiSqliteLogger\" />
+    <Folder Include="Server\TcHmiSrv\" />
+    <Folder Include="Server\TcHmiUserManagement\" />
+    <Content Include="Server\ADS\ADS.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\ADS\ADS.Config.remote.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\ADS\ADS.Storage.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiLua\TcHmiLua.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSqliteLogger\TcHmiSqliteLogger.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiSrv\TcHmiSrv.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiSrv\TcHmiSrv.Config.remote.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiSrv\TcHmiSrv.Storage.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.default.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Config.remote.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="Server\TcHmiUserManagement\TcHmiUserManagement.Storage.json">
+      <SubType>Content</SubType>
+      <Visible>false</Visible>
+    </Content>
+    <Folder Include="Themes\Base\Images\" />
+  </ItemGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
+  </Target>
+  <Import Project="$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.5.5.3\build\Microsoft.TypeScript.MSBuild.targets')" />
+</Project>

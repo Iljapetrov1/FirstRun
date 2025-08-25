@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_BatteryState" Id="{b186d303-a774-43ca-92e0-49dddb5ce4c8}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+{attribute 'to_string'}
+TYPE E_BatteryState :
+(
+	Active 			:= 0,
+	Gray			:= 1,
+	Fault			:= 2,
+	Yellow			:= 3
+	
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

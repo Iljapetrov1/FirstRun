@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="60px" height="60px" viewBox="0 0 60 60" xml:space="preserve">
+<ellipse id="XMLID_20_" fill="#000000" cx="30.1" cy="30" rx="22.1" ry="22"/>
+<ellipse id="XMLID_18_" fill="none" stroke="#C3D2E7" stroke-width="2" stroke-miterlimit="10" cx="30.1" cy="30" rx="22.1" ry="22"/>
+<circle id="XMLID_17_" fill="none" stroke="#18212F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="30" cy="30" r="26"/>
+<path id="XMLID_4_" fill="#C3D2E7" d="M25,8V4c0-1.7,1.3-3,3-3h4c1.7,0,3,1.3,3,3v4H25z"/>
+<path id="XMLID_5_" fill="#C3D2E7" d="M25,56v-4h10v4c0,1.7-1.3,3-3,3h-4C26.3,59,25,57.7,25,56z"/>
+<rect id="XMLID_10_" x="25" y="9" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -12.7802 30.1459)" fill="#C3D2E7" width="10" height="43"/>
+<path fill="#FFFF00" d="M8.2,28.4H8.1c-0.5-0.1-0.9-0.6-0.9-1.1C8.5,16,17.7,7.5,29,7c0.5,0,1,0.4,1,1s-0.4,1-1,1
+	C18.7,9.5,10.4,17.2,9.1,27.5C9.1,28,8.7,28.4,8.2,28.4z"/>
+<polyline id="XMLID_6_" fill="none" stroke="#FFFF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="31,2000" points="
+	4,24 8,28 13,24 "/>
+</svg>

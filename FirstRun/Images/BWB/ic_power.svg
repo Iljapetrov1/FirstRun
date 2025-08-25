@@ -1,0 +1,8 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" baseProfile="tiny" version="1.2">
+
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" d="m34.1,15.4l0,-9.4l-19.1,0l0,9.4c-3.9,2.9 -6.3,7.5 -6.3,12.7c0,8.8 7.1,15.9 15.9,15.9s15.9,-7.1 15.9,-15.9c0,-5.2 -2.5,-9.8 -6.4,-12.7zm-9.5,26.1c-7.4,0 -13.4,-6 -13.4,-13.4c0,-4.8 2.5,-9 6.3,-11.4l0,-8.2l14,0l0,8.2c3.8,2.4 6.4,6.6 6.4,11.4c0.1,7.4 -5.9,13.4 -13.3,13.4z" fill="#FFFFFF"/>
+  <text style="cursor: move;" x="1.41732" y="0.31496" id="svg_2" font-size="15px" font-family="'SourceSansPro-SemiBold'" fill="#FFFFFF" transform="matrix(1 0 0 1 13.4906 33.7269)">kW</text>
+ </g>
+</svg>

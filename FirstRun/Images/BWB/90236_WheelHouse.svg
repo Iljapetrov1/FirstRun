@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2" viewBox="0 0 1200 280">
+  <g id="_Supertstructure_" data-name="&amp;lt;Supertstructure&amp;gt;">
+    <path d="M539,54.7v48.1-48.1Z" fill="none" stroke="#c3d2e7" stroke-miterlimit="10"/>
+    <polyline points="847.1 215.7 869.3 171.9 869.3 140 869.3 108.1 847.1 64.3" fill="none" stroke="#c3d2e7" stroke-miterlimit="10"/>
+    <line x1="539" y1="225.3" x2="539" y2="177.3" fill="none" stroke="#c3d2e7" stroke-miterlimit="10"/>
+    <polygon points="437 225.3 610.2 225.3 610.2 225.5 842.1 225.5 847.1 215.7 1031.2 171.9 1031.2 140 1031.2 108.1 847.1 64.3 842.1 54.5 610.2 54.5 610.2 54.7 437 54.7 437 102.7 539 102.7 539 177.3 437 177.3 437 225.3" fill="none" stroke="#c3d2e7" stroke-linejoin="round" stroke-width="3"/>
+    <g id="_Stairs1_" data-name="&amp;lt;Stairs1&amp;gt;">
+      <line x1="606.4" y1="167.3" x2="606.4" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="612.8" y1="167.3" x2="612.8" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="619.3" y1="167.3" x2="619.3" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="625.8" y1="167.3" x2="625.8" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="632.3" y1="167.3" x2="632.3" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="638.8" y1="167.3" x2="638.8" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="645.3" y1="167.3" x2="645.3" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="651.8" y1="167.3" x2="651.8" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="658.3" y1="167.3" x2="658.3" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="664.7" y1="167.3" x2="664.7" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="671.2" y1="167.3" x2="671.2" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <line x1="677.6" y1="167.3" x2="677.6" y2="202.2" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+      <polyline points="599.9 202.2 681.7 202.2 681.7 167.8 599.9 167.3" fill="none" stroke="#0b1320" stroke-miterlimit="10"/>
+    </g>
+    <path d="M537,167.8h-26.6c0-1.9.5-11.3,8.2-18.8,7.4-7.3,16.4-7.8,18.4-7.8v26.6Z" fill="none" stroke="#0b1320" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="AFT" xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2" viewBox="0 0 300 424">
+  <line x1="224.9" y1="30.5" x2="224.9" y2="393.7" fill="none" stroke="#C3D2E7" stroke-miterlimit="10"/>
+  <line x1="218.8" y1="30.6" x2="218.8" y2="393.6" fill="none" stroke="#C3D2E7" stroke-miterlimit="10"/>
+  <path d="M253.9,394.5c-9.9-.3-19.6-.5-29-.7,0,0-118.3-3.1-118.3-3.1l-70.8-10.3s0-168.3,0-168.3V43.8l70.8-10.3s118.3-3.1,118.3-3.1c9.4-.2,19.2-.5,29.1-.7" fill="none" stroke="#C3D2E7" stroke-miterlimit="10" stroke-width="3"/>
+  <polyline points="253.9 410.8 253.9 220.7 264.2 217.9 243.6 206.1 254 203.3 254 13.2" fill="none" stroke="#C3D2E7" stroke-miterlimit="10"/>
+</svg>
