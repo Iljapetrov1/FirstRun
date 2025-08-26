@@ -1,6 +1,6 @@
-<div id="Inverter_3" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500">
+<div id="Inverter_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="350" data-tchmi-height="213" data-tchmi-width-unit="px" data-tchmi-height-unit="px" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500">
 
-<div id="TcHmiImage_9" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="181" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="226" data-tchmi-width-unit="px" data-tchmi-src="Images/BWB/ic-inverter-DC-DC_grey.svg" data-tchmi-background-image="Images/BWB/ic-inverter-DC-DC_grey.svg">
+<div id="TcHmiImage_9" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiImage" data-tchmi-height="150" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-top="30" data-tchmi-top-unit="px" data-tchmi-width="300" data-tchmi-width-unit="px">
 
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
@@ -9,7 +9,7 @@
     "actions": [
       {
         "objectType": "SwitchCase",
-        "active": false,
+        "active": true,
         "compare": {
           "objectType": "Symbol",
           "valueType": "tchmi:server#/definitions/ADS-PLC1.E_BatteryState",

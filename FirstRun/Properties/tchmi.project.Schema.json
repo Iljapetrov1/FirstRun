@@ -49,14 +49,6 @@
       "type": "object",
       "id": "tchmi:project#/definitions/MultiStateImageFlow"
     },
-    "Inverter": {
-      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
-      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
-      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
-      "frameworkUserControlConfig": "Usercontrols\\Inverter.usercontrol.json",
-      "type": "object",
-      "id": "tchmi:project#/definitions/Inverter"
-    },
     "AlarmWidget": {
       "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
       "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
@@ -72,6 +64,14 @@
       "frameworkUserControlConfig": "Usercontrols\\Battery2.usercontrol.json",
       "type": "object",
       "id": "tchmi:project#/definitions/Battery2"
+    },
+    "Inverter": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "Usercontrols\\Inverter.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/Inverter"
     }
   }
 }
